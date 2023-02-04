@@ -4,46 +4,43 @@ import Topbar from './components/Topbar'
 import Home from './pages/Home'
 import Notfound from './pages/Notfound'
 import Ticket from './pages/Ticket'
-import { MenuContextProvider } from './context/MenuContext'
+import { MenuContext } from './context/MenuContext'
 import { useContext } from 'react'
 
-function App() {
-  // const { isOpen } = useContext(MenuContext)
-  // console.log(isOpen)
+const App = () => {
+  const { isOpen } = useContext(MenuContext)
   return (
     <>
-      <MenuContextProvider>
-        <div className='flex'>
-          <div className='fixed'>
-            <Sidemenu />
+      <div className='flex'>
+        <div className='fixed'>
+          <Sidemenu />
+        </div>
+        <div className={`main w-full ${isOpen ? 'ml-60' : 'ml-20'}`}>
+          <div className='sticky top-0 w-full'>
+            <Topbar />
+            {/* ! kaam garena ta */}
           </div>
-          <div className={`main w-full ml-60`}>
-            <div className='sticky top-0 w-full'>
-              <Topbar />
-              {/* ! kaam garena ta */}
-            </div>
-            <div className='main-content pt-8 px-8'>
-              <Routes>
+          <div className='main-content pt-8 px-8'>
+            <Routes>
+              <Route
+                path='/'
+                element={<Home />}
+              />
+              <Route path='/ticket'>
                 <Route
-                  path='/'
-                  element={<Home />}
+                  index
+                  element={<Ticket />}
                 />
-                <Route path='/ticket'>
-                  <Route
-                    index
-                    element={<Ticket />}
-                  />
-                  {/* <Route path=':id' element={} /> */}
-                </Route>
-                <Route
-                  path='*'
-                  element={<Notfound />}
-                />
-              </Routes>
-            </div>
+                {/* <Route path=':id' element={} /> */}
+              </Route>
+              <Route
+                path='*'
+                element={<Notfound />}
+              />
+            </Routes>
           </div>
         </div>
-      </MenuContextProvider>
+      </div>
     </>
   )
 }

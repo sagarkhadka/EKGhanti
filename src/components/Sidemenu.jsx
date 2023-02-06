@@ -9,7 +9,7 @@ const Sidemenu = () => {
 
   return (
     <>
-      <div className={`${isOpen ? 'w-60' : 'w-fit'} bg-light-grey px-5 py-6 min-h-screen space-y-5 duration-200`}>
+      <div className={`${isOpen ? 'w-56' : 'w-fit'} bg-light-grey px-5 py-6 min-h-screen space-y-5 duration-200`}>
         <div className=''>
           
           {/* <h5 className={`${isOpen ? 'block' : 'hidden'} duration-200 pl-2 text-indigo-900`}>Dashboard</h5> */}
@@ -20,7 +20,7 @@ const Sidemenu = () => {
         <div className=''>
           <ul>
             <li>
-              <NavLink to='/' activeClassName='active-nav'>
+              <NavLink to='/'>
                 <div className='side-link'>
                   <div className='side-link-title'>
                     <BiHomeAlt className='text-indigo-700' size={22} />

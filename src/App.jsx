@@ -6,6 +6,7 @@ import Notfound from './pages/Notfound'
 import Ticket from './pages/Ticket'
 import { MenuContext } from './context/MenuContext'
 import { useContext } from 'react'
+import Newticket from './pages/Newticket'
 
 const App = () => {
   const { isOpen } = useContext(MenuContext)
@@ -15,12 +16,12 @@ const App = () => {
         <div className='fixed'>
           <Sidemenu />
         </div>
-        <div className={`main w-full ${isOpen ? 'ml-60' : 'ml-20'}`}>
-          <div className='sticky top-0 w-full'>
+        <div className={`main w-full overflow-hidden ${isOpen ? 'ml-56' : 'ml-20'}`}>
+          <div className=''>
             <Topbar />
             {/* ! kaam garena ta */}
           </div>
-          <div className='main-content pt-8 px-8'>
+          <div className='main-content py-8 px-8 overflow-hidden max-w-fit'>
             <Routes>
               <Route
                 path='/'
@@ -31,7 +32,7 @@ const App = () => {
                   index
                   element={<Ticket />}
                 />
-                {/* <Route path=':id' element={} /> */}
+                <Route path='new' element={ <Newticket /> } />
               </Route>
               <Route
                 path='*'

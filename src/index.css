@@ -50,7 +50,16 @@ small, .text_small {font-size: 0.8rem;}
   }
 
   .btn-primary {
-    @apply bg-indigo-500 px-6 py-3 rounded font-bold uppercase text-indigo-50 text-sm transition-colors duration-200
+    @apply bg-indigo-500 px-6 py-3 flex gap-2 items-center rounded font-bold uppercase text-indigo-50 text-sm transition-colors duration-200
     hover:bg-indigo-600
+  }
+  
+  .btn-secondary {
+    @apply cursor-pointer p-2 rounded duration-200 text-indigo-600
+    hover:text-indigo-600 hover:bg-indigo-200
+  }
+
+  button.btn-secondary:disabled {
+    @apply bg-dark-grey text-white cursor-not-allowed opacity-70
   }
 }

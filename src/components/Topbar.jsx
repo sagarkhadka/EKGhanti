@@ -13,7 +13,7 @@ const Topbar = () => {
         <div className='flex items-center justify-between'>
           <div className="flex gap-5">
             <button
-              className='cursor-pointer p-2 rounded duration-200 hover:text-indigo-600 hover:bg-indigo-200'
+              className='btn-secondary'
               onClick={() => toggleMenu()}
             >
               <CgMenuLeft

@@ -63,13 +63,13 @@ export const COLUMN = [
         <div className='flex gap-3'>
           <button
             className='text-sucess p-2 border border-sucess rounded hover:bg-sucess/25'
-            onClick={() => alert('Edit')}
+            onClick={() => alert('You cannot edit ticket ' + row.values.ticket_id + ' as of now')}
           >
             Edit
           </button>
           <button
             className='text-fail p-2 border border-fail rounded hover:bg-fail/25'
-            onClick={() => alert('Delete' + row.values.ticket_id)}
+            onClick={() => alert('Delete ticket ' + row.values.ticket_id)}
           >
             Delete
           </button>

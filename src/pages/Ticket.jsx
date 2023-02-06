@@ -5,7 +5,7 @@ import Datas from '../components/Datas'
 const Ticket = () => {
   return (
     <>
-      <section className='space-y-6'>
+      <section className='space-y-6 w-full'>
         <Datas />
         <Datatable />
       </section>

@@ -1,11 +1,13 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useTable, usePagination } from 'react-table'
 import { COLUMN } from './Column'
 import MOCK_DATA from '../../assets/MOCK_DATA.json'
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
 import { MdAdd } from 'react-icons/md'
+import Newticketform from '../Newticketform'
 
 const Datatable = () => {
+  const [isOpen, setIsOpen] = useState(false)
   const data = useMemo(() => MOCK_DATA, [])
   const columns = useMemo(() => COLUMN, [])
 
@@ -13,21 +15,44 @@ const Datatable = () => {
   const { getTableProps, getTableBodyProps, headerGroups, page, nextPage, canNextPage, canPreviousPage, previousPage, pageOptions, state, prepareRow } = tableInstance
   const { pageIndex } = state
 
+  const setModel = () => {
+    setIsOpen(!isOpen)
+  }
+
+  if (isOpen) {
+    document.body.style = `
+      overflow: hidden
+    `
+  } else {
+    document.body.style.overflow = 'auto'
+  }
+
   return (
     <>
       <div className='flex justify-between items-center'>
         <h3 className='text-dark-grey'>Ticket</h3>
-        <button className='btn-primary pl-4'>
+        <button onClick={() => setModel()} className='btn-primary pl-4'>
           <span className='text-lg'>
             <MdAdd />
           </span>
           New
         </button>
       </div>
-      <div className='max-w-screen overflow-auto rounded shadow-lg border'>
+
+      {
+        isOpen &&
+        <div className="absolute -top-8 right-0 bottom-0 bg-black bg-opacity-40 w-full">
+          <div className="bg-light-grey p-5 shadow-xl w-fit absolute top-1/2  -translate-y-1/2 left-1/2 -translate-x-1/2 rounded-md">
+            <h5 className='text-indigo-600 divide-y'>Add New Ticket</h5>
+            <Newticketform toggle={setModel} />
+          </div>
+        </div>
+      }
+
+      <div className='overflow-auto rounded shadow-lg border w-full'>
         <table
           {...getTableProps()}
-          className='min-w-fit divide-y divide-gray-200 table-auto'
+          className='w-full divide-y divide-gray-200 table-auto'
         >
           <thead className='bg-indigo-100'>
             {headerGroups.map((headerGroup, index) => (
